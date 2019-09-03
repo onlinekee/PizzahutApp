@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Pizzahut-order</string>
+    <string name="choosepizza">Choose Your Pizza</string>
+    <string name="search">Search</string>
+</resources>
