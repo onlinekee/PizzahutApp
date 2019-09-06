@@ -17,7 +17,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".SearchPizza" />
-        <activity android:name=".searchresult"></activity>
+        <activity android:name=".searchresult" />
+        <activity android:name=".rowdata" />
+        <activity android:name=".griditem"></activity>
     </application>
 
 </manifest>

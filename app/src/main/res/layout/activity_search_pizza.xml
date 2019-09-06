@@ -22,7 +22,11 @@
         android:layout_marginTop="39dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:background="@drawable/buttondropdown"
+        android:popupBackground="@drawable/spinnerbg"
         android:entries="@array/spinnerItems"
+        android:spinnerMode="dropdown"
+        android:theme="@style/Spinner"
         app:layout_constraintEnd_toStartOf="@+id/spinner_pizzaveg"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/include" />
@@ -36,8 +40,9 @@
         android:layout_marginTop="39dp"
         android:layout_marginEnd="29dp"
         android:layout_marginRight="29dp"
-
-
+        android:background="@drawable/buttondropdown"
+        android:popupBackground="@drawable/spinnerbg"
+        android:theme="@style/Spinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/spinner_pizzatype"
         app:layout_constraintTop_toBottomOf="@+id/include"
@@ -71,5 +76,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <GridView
+        android:id="@+id/gridview_pizza"
+        android:layout_width="0dp"
+        android:layout_height="280dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="235dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_pizzatype"
+        app:layout_constraintVertical_bias="0.0" />
 
 </android.support.constraint.ConstraintLayout>

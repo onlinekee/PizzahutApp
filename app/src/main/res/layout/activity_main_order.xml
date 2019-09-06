@@ -19,7 +19,7 @@
         android:layout_marginBottom="16dp"
         android:background="@color/colorAccent"
         android:text="@string/choosepizza"
-        android:textColor="#ea0515"
+        android:textColor="#faf9f9"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -36,6 +36,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent" />
-    <include layout="@layout/toolbar_layout"/>
+
+    <include
+        android:id="@+id/include2"
+        layout="@layout/toolbar_layout" />
 
 </android.support.constraint.ConstraintLayout>

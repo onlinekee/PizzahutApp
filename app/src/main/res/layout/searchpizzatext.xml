@@ -3,61 +3,24 @@
     android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:padding="10dp"
+    android:padding="0dp"
     android:elevation="12dp"
 
     >
-
-
-
-
-    <ImageView
-        android:id="@+id/album"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/cheeselover" />
-    <TextView
+    <include
+        android:id="@+id/include"
+        layout="@layout/toolbar_layout" />
+    <GridView
+        android:id="@+id/gridview"
+        android:numColumns="1"
+        android:verticalSpacing="1dp"
+        android:horizontalSpacing="2dp"
+        android:background="@drawable/background"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Cheese Lover"
-        android:padding="8dp"
-        android:gravity="center"
-        android:textSize="18dp"
-        android:textStyle="bold"
-        android:id="@+id/album_title"
-        />
-    <ImageView
-        android:id="@+id/album1"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/spicyveggiepanner" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Spicy Veggie Panner"
-        android:padding="8dp"
-        android:gravity="center"
-        android:textSize="18dp"
-        android:textStyle="bold"
-        android:id="@+id/album_title1"
-        />
-    <ImageView
-        android:id="@+id/album2"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/veggiesupreme" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Veggie Supreme"
-        android:padding="8dp"
-        android:gravity="center"
-        android:textSize="18dp"
-        android:textStyle="bold"
-        android:id="@+id/album_title2"
-        />
+        android:layout_height="wrap_content"></GridView>
+
+
+
+
 
 </LinearLayout>
