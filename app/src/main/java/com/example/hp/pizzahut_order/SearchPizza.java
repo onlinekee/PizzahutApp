@@ -3,6 +3,7 @@ package com.example.hp.pizzahut_order;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -15,12 +16,16 @@ import java.util.ArrayList;
 public class SearchPizza extends AppCompatActivity {
     Button btnsearch;
     GridView gridView;
+
     Spinner pizzatype, pizzavariety;
+
     String[] varieties = {"All", "CLASSIC", "SIGNATURE", "SUPREME"};
+
     String[] pizzanames = {"Cheese Lover", "Veggie Supreme", "Spicy Veggie Panner", "Devilled Chicken", "Chicken Bacon"};
+
     int[] pizzaimage = {R.drawable.cheeselover, R.drawable.veggiesupreme, R.drawable.spicyveggiepanner, R.drawable.devilledchicken, R.drawable.chickenbacon};
     ArrayAdapter<Pizza> adapter;
-
+    CustomGridViewActivity adapterGridView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,12 +35,23 @@ public class SearchPizza extends AppCompatActivity {
         pizzavariety = (Spinner) findViewById(R.id.spinner_pizzatype);
         pizzavariety.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, varieties));
 
-        gridView = (GridView) findViewById(R.id.gridview_pizza);
-        gridView.setAdapter(new ArrayAdapter<Pizza>(this, android.R.layout.simple_list_item_1, getPizzas()));
 
+
+        //CustomGridViewActivity adapterView = new CustomGridViewActivity(SearchPizza.this, pizzanames, pizzaimage);
+        adapterGridView = new CustomGridViewActivity(this, getPizzas());
+        gridView = (GridView) findViewById(R.id.gridview_pizza);
+
+        //gridView.setAdapter(new ArrayAdapter<Pizza>(this, android.R.layout.simple_list_item_1, getPizzas()));
+        gridView.setAdapter(adapterGridView);
         pizzatype = (Spinner) findViewById(R.id.spinner_pizzaveg);
 
 
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getApplicationContext(), pizzanames[position], Toast.LENGTH_SHORT).show();
+            }
+        });
         //final Adapter adapter = new Adapter(this, this.getPizza());
 
         pizzavariety.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -62,11 +78,11 @@ public class SearchPizza extends AppCompatActivity {
         ArrayList<Pizza> data = new ArrayList<>();
         data.clear();
 
-        data.add(new Pizza(1, "CHEESE LOVERS",1));
-        data.add(new Pizza(1, "VEGGIE SUPREME",2));
-        data.add(new Pizza(2, "SPICY VEGGIE PANNER",3));
-        data.add(new Pizza(2, "DEVILLED CHICKEN",4));
-        data.add(new Pizza(3, "CHICKEN BACON",5));
+        data.add(new Pizza(1, pizzanames[0], pizzaimage[0]));
+        data.add(new Pizza(1, pizzanames[1], pizzaimage[1]));
+        data.add(new Pizza(2, pizzanames[2], pizzaimage[2]));
+        data.add(new Pizza(2, pizzanames[3], pizzaimage[3]));
+        data.add(new Pizza(3, pizzanames[4], pizzaimage[4]));
 
         return data;
     }
@@ -74,7 +90,7 @@ public class SearchPizza extends AppCompatActivity {
     private void getSelectedItemData(int varietyId) {
         ArrayList<Pizza> pizzas = new ArrayList<>();
         if (varietyId == 0) {
-            adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, getPizzas());
+            adapterGridView = new CustomGridViewActivity(this, getPizzas());
 
         } else {
             for (Pizza p : getPizzas()) {
@@ -82,11 +98,11 @@ public class SearchPizza extends AppCompatActivity {
                     pizzas.add(p);
                 }
             }
-
-            adapter = new ArrayAdapter<Pizza>(this, android.R.layout.simple_list_item_1, pizzas);
+            adapterGridView = new CustomGridViewActivity(this, pizzas);
+            //adapter = new ArrayAdapter<Pizza>(this, android.R.layout.simple_list_item_1, pizzas);
         }
 
-        gridView.setAdapter(adapter);
+        gridView.setAdapter(adapterGridView);
 
     }
 

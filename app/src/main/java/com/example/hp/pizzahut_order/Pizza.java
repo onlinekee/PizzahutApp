@@ -15,6 +15,7 @@ public class Pizza {
         this.img = img;
 
     }
+
     public int getImg() {
         return img;
     }
@@ -39,8 +40,5 @@ public class Pizza {
         this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return name;
-    }
+
 }

@@ -14,40 +14,74 @@
         android:id="@+id/include"
         layout="@layout/toolbar_layout" />
 
-    <Spinner
-        android:id="@+id/spinner_pizzatype"
-        android:layout_width="178dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="39dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:background="@drawable/buttondropdown"
-        android:popupBackground="@drawable/spinnerbg"
-        android:entries="@array/spinnerItems"
-        android:spinnerMode="dropdown"
-        android:theme="@style/Spinner"
-        app:layout_constraintEnd_toStartOf="@+id/spinner_pizzaveg"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include" />
 
-    <Spinner
-        android:id="@+id/spinner_pizzaveg"
-        android:layout_width="154dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="39dp"
-        android:layout_marginEnd="29dp"
-        android:layout_marginRight="29dp"
-        android:background="@drawable/buttondropdown"
-        android:popupBackground="@drawable/spinnerbg"
-        android:theme="@style/Spinner"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/spinner_pizzatype"
-        app:layout_constraintTop_toBottomOf="@+id/include"
-        android:entries="@array/spinnerveg"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Spinner
+                android:id="@+id/spinner_pizzatype"
+                android:layout_width="178dp"
+                android:layout_height="44dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="80dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/buttondropdown"
+                android:entries="@array/spinnerItems"
+                android:popupBackground="@drawable/spinnerbg"
+                android:spinnerMode="dropdown"
+                android:theme="@style/Spinner"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/spinner_pizzaveg"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Spinner
+                android:id="@+id/spinner_pizzaveg"
+                android:layout_width="154dp"
+                android:layout_height="43dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginEnd="29dp"
+                android:layout_marginRight="29dp"
+                android:background="@drawable/buttondropdown"
+                android:entries="@array/spinnerveg"
+                android:popupBackground="@drawable/spinnerbg"
+                android:theme="@style/Spinner"
+                app:layout_constraintBaseline_toBaselineOf="@+id/spinner_pizzatype"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/spinner_pizzatype" />
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <GridView
+                android:id="@+id/gridview_pizza"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:numColumns="1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent" />
+        </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
+
+
+
+
+
+
 
     <!--<Button-->
         <!--android:id="@+id/button_searchpizza"-->
@@ -78,13 +112,7 @@
         <!--app:layout_constraintHorizontal_bias="0.2"-->
         <!--app:layout_constraintStart_toStartOf="parent" />-->
 
-    <GridView
-        android:id="@+id/gridview_pizza"
-        android:layout_width="0dp"
-        android:layout_height="280dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_pizzatype" />
+
+
 
 </android.support.constraint.ConstraintLayout>
