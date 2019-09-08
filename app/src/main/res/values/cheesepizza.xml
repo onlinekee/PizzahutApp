@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="pizzacrust">
+        <item>     </item>
+        <item>PAN</item>
+        <item>STUFFED</item>
+        <item>SAUSAGE</item>
+    </string-array>
+</resources>

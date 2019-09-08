@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="spinnerItems">
+        <item>ALL</item>
         <item>CLASSIC</item>
         <item>SIGNATURE</item>
         <item>SUPREME</item>

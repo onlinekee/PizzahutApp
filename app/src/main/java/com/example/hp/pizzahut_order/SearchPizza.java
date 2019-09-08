@@ -31,7 +31,7 @@ public class SearchPizza extends AppCompatActivity {
         pizzavariety.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, varieties));
 
         gridView = (GridView) findViewById(R.id.gridview_pizza);
-        gridView.setAdapter(new ArrayAdapter<Pizza>(this, android.R.layout.simple_list_item_1, getPizza()));
+        gridView.setAdapter(new ArrayAdapter<Pizza>(this, android.R.layout.simple_list_item_1, getPizzas()));
 
         pizzatype = (Spinner) findViewById(R.id.spinner_pizzaveg);
 
@@ -62,11 +62,11 @@ public class SearchPizza extends AppCompatActivity {
         ArrayList<Pizza> data = new ArrayList<>();
         data.clear();
 
-        data.add(new Pizza(1, "VEG"));
-        data.add(new Pizza(1, "VEG"));
-        data.add(new Pizza(2, "VEG"));
-        data.add(new Pizza(2, "NONVEG"));
-        data.add(new Pizza(3, "NONVEG"));
+        data.add(new Pizza(1, "CHEESE LOVERS"));
+        data.add(new Pizza(1, "VEGGIE SUPREME"));
+        data.add(new Pizza(2, "CHICKEN BACON"));
+        data.add(new Pizza(2, "SPICY CHICKEN"));
+        data.add(new Pizza(3, "'SPICY PANNER SUPREME"));
 
         return data;
     }
