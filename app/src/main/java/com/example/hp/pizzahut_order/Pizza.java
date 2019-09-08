@@ -4,12 +4,23 @@ public class Pizza {
     private int varietyID;
     //private String type;
     private String name;
-    //private int img;
+    private int img;
 
 
-    public Pizza(int varietyID, String name) {
+
+
+    public Pizza(int varietyID, String name, int img) {
         this.varietyID = varietyID;
         this.name = name;
+        this.img = img;
+
+    }
+    public int getImg() {
+        return img;
+    }
+
+    public void setImg(int img) {
+        this.img = img;
     }
 
     public int getVarietyID() {

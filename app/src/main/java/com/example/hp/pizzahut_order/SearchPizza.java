@@ -62,11 +62,11 @@ public class SearchPizza extends AppCompatActivity {
         ArrayList<Pizza> data = new ArrayList<>();
         data.clear();
 
-        data.add(new Pizza(1, "CHEESE LOVERS"));
-        data.add(new Pizza(1, "VEGGIE SUPREME"));
-        data.add(new Pizza(2, "CHICKEN BACON"));
-        data.add(new Pizza(2, "SPICY CHICKEN"));
-        data.add(new Pizza(3, "'SPICY PANNER SUPREME"));
+        data.add(new Pizza(1, "CHEESE LOVERS",1));
+        data.add(new Pizza(1, "VEGGIE SUPREME",2));
+        data.add(new Pizza(2, "SPICY VEGGIE PANNER",3));
+        data.add(new Pizza(2, "DEVILLED CHICKEN",4));
+        data.add(new Pizza(3, "CHICKEN BACON",5));
 
         return data;
     }
