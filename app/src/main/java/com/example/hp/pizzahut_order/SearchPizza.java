@@ -21,6 +21,8 @@ public class SearchPizza extends AppCompatActivity {
 
     String[] varieties = {"All", "CLASSIC", "SIGNATURE", "SUPREME"};
 
+    String[] types = {"All", "Veg", "Non Veg"};
+
     String[] pizzanames = {"Cheese Lover", "Veggie Supreme", "Spicy Veggie Panner", "Devilled Chicken", "Chicken Bacon"};
 
     int[] pizzaimage = {R.drawable.cheeselover, R.drawable.veggiesupreme, R.drawable.spicyveggiepanner, R.drawable.devilledchicken, R.drawable.chickenbacon};
@@ -58,7 +60,7 @@ public class SearchPizza extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position >= 0 && position < varieties.length) {
-                    getSelectedItemData(position);
+                    getSelectedItemData(position, pizzatype.getSelectedItemPosition());
                 } else {
                     Toast.makeText(SearchPizza.this, "Selected Item Does Not Exist", Toast.LENGTH_SHORT).show();
 
@@ -71,6 +73,22 @@ public class SearchPizza extends AppCompatActivity {
             }
         });
 
+        pizzatype.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position >= 0 && position < types.length) {
+                    getSelectedItemData(pizzavariety.getSelectedItemPosition(), position);
+                } else {
+                    Toast.makeText(SearchPizza.this, "Selected Item Does Not Exist", Toast.LENGTH_SHORT).show();
+
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
     }
 
@@ -78,23 +96,37 @@ public class SearchPizza extends AppCompatActivity {
         ArrayList<Pizza> data = new ArrayList<>();
         data.clear();
 
-        data.add(new Pizza(1, pizzanames[0], pizzaimage[0]));
-        data.add(new Pizza(1, pizzanames[1], pizzaimage[1]));
-        data.add(new Pizza(2, pizzanames[2], pizzaimage[2]));
-        data.add(new Pizza(2, pizzanames[3], pizzaimage[3]));
-        data.add(new Pizza(3, pizzanames[4], pizzaimage[4]));
+        data.add(new Pizza(1,1, pizzanames[0], pizzaimage[0]));
+        data.add(new Pizza(1,1, pizzanames[1], pizzaimage[1]));
+        data.add(new Pizza(1,2, pizzanames[2], pizzaimage[2]));
+        data.add(new Pizza(2,2, pizzanames[3], pizzaimage[3]));
+        data.add(new Pizza(2,3, pizzanames[4], pizzaimage[4]));
 
         return data;
     }
 
-    private void getSelectedItemData(int varietyId) {
+    private void getSelectedItemData(int varietyId, int typeID) {
         ArrayList<Pizza> pizzas = new ArrayList<>();
-        if (varietyId == 0) {
+        if ((varietyId == 0) && (typeID == 0)) {
             adapterGridView = new CustomGridViewActivity(this, getPizzas());
 
-        } else {
+        }else if((varietyId == 0) && (typeID > 0)){
+            for (Pizza p : getPizzas()) {
+                if (p.getTypeID() == typeID) {
+                    pizzas.add(p);
+                }
+            }
+            adapterGridView = new CustomGridViewActivity(this, pizzas);
+        }else if((varietyId > 0) && (typeID == 0)) {
             for (Pizza p : getPizzas()) {
                 if (p.getVarietyID() == varietyId) {
+                    pizzas.add(p);
+                }
+            }
+            adapterGridView = new CustomGridViewActivity(this, pizzas);
+        } else {
+            for (Pizza p : getPizzas()) {
+                if ((p.getVarietyID() == varietyId) && (p.getTypeID() == typeID)) {
                     pizzas.add(p);
                 }
             }

@@ -5,15 +5,23 @@ public class Pizza {
     //private String type;
     private String name;
     private int img;
+    private int typeID;
 
 
-
-
-    public Pizza(int varietyID, String name, int img) {
+    public Pizza(int typeID, int varietyID, String name, int img) {
+        this.typeID = typeID;
         this.varietyID = varietyID;
         this.name = name;
         this.img = img;
 
+    }
+
+    public int getTypeID() {
+        return typeID;
+    }
+
+    public void setTypeID(int typeID) {
+        this.typeID = typeID;
     }
 
     public int getImg() {
