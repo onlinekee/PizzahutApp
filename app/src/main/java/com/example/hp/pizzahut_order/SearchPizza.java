@@ -1,8 +1,7 @@
 package com.example.hp.pizzahut_order;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -17,9 +16,9 @@ public class SearchPizza extends AppCompatActivity {
     Button btnsearch;
     GridView gridView;
     Spinner pizzatype, pizzavariety;
-    String[] categories = {"All","CLASSIC","SIGNATURE","SUPREME"};
-    String[] pizzanames = {"Cheese Lover","Veggie Supreme","Spicy Veggie Panner","Devilled Chicken","Chicken Bacon"};
-    int[] pizzaimage = {R.drawable.cheeselover,R.drawable.veggiesupreme,R.drawable.spicyveggiepanner,R.drawable.devilledchicken,R.drawable.chickenbacon};
+    String[] varieties = {"All", "CLASSIC", "SIGNATURE", "SUPREME"};
+    String[] pizzanames = {"Cheese Lover", "Veggie Supreme", "Spicy Veggie Panner", "Devilled Chicken", "Chicken Bacon"};
+    int[] pizzaimage = {R.drawable.cheeselover, R.drawable.veggiesupreme, R.drawable.spicyveggiepanner, R.drawable.devilledchicken, R.drawable.chickenbacon};
     ArrayAdapter<Pizza> adapter;
 
 
@@ -28,36 +27,24 @@ public class SearchPizza extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_pizza);
 
-        pizzavariety = (Spinner)findViewById(R.id.spinner_pizzaveg);
-        pizzavariety.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, categories));
+        pizzavariety = (Spinner) findViewById(R.id.spinner_pizzatype);
+        pizzavariety.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, varieties));
 
-        gridView = (GridView)findViewById(R.id.gridview_pizza);
-        gridView.setAdapter(new ArrayAdapter<Pizza>(this,android.R.layout.simple_list_item_1,getPizza()));
+        gridView = (GridView) findViewById(R.id.gridview_pizza);
+        gridView.setAdapter(new ArrayAdapter<Pizza>(this, android.R.layout.simple_list_item_1, getPizza()));
 
-        pizzatype= (Spinner)findViewById(R.id.spinner_pizzatype);
+        pizzatype = (Spinner) findViewById(R.id.spinner_pizzaveg);
 
-        btnsearch = (Button)findViewById(R.id.button_searchpizza);
 
-        final Adapter adapter = new Adapter(this,this.getPizza());
+        //final Adapter adapter = new Adapter(this, this.getPizza());
 
         pizzavariety.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String variety = "ALL";
-                if (position == 1){
-                    variety = "CLASSIC";
-
-                }else if (position == 2){
-                    variety = "SIGNATURE";
-                }else if (position == 3){
-                    variety = "SUPREME";
-                }
-
-                if(position >=0 && position <categories.length){
-                    getSelectedItemData(variety);
-
-                }else{
-                    Toast.makeText(SearchPizza.this,"Selected Item Does Not Exist",Toast.LENGTH_SHORT).show();
+                if (position >= 0 && position < varieties.length) {
+                    getSelectedItemData(position);
+                } else {
+                    Toast.makeText(SearchPizza.this, "Selected Item Does Not Exist", Toast.LENGTH_SHORT).show();
 
                 }
             }
@@ -70,37 +57,48 @@ public class SearchPizza extends AppCompatActivity {
 
 
     }
-    private ArrayList<Pizza> getPizza(){
+
+    private ArrayList<Pizza> getPizzas(){
         ArrayList<Pizza> data = new ArrayList<>();
         data.clear();
 
-        data.add(new Pizza("CLASSIC", "VEG","Cheese Lovers",1));
-        data.add(new Pizza("CLASSIC", "VEG","Veggie Supreme",2));
-        data.add(new Pizza("SUPREME", "VEG","Spicy Veggie Panner",3));
-        data.add(new Pizza("SUPREME", "NONVEG","Devilled Chicken",4));
-        data.add(new Pizza("SIGNATURE", "NONVEG","Chicken Bacon",5));
-//
-//        for (int i = 0;i<pizzanames.length;i++){
-//            pizza= new Pizza(null,null,pizzanames[i],pizzaimage[i]);
-//            pizzas.add(pizza);
-//        }
+        data.add(new Pizza(1, "VEG"));
+        data.add(new Pizza(1, "VEG"));
+        data.add(new Pizza(2, "VEG"));
+        data.add(new Pizza(2, "NONVEG"));
+        data.add(new Pizza(3, "NONVEG"));
+
         return data;
     }
 
-    private void getSelectedItemData(String variety){
+    private void getSelectedItemData(int varietyId) {
         ArrayList<Pizza> pizzas = new ArrayList<>();
-        if (variety == null ){
-            adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,getPizza());
+        if (varietyId == 0) {
+            adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, getPizzas());
 
-        }else{
-            for (Pizza pizza : getPizza()){
-                if (pizza.getVariety().equals(variety)){
-                    pizzas.add(pizza);
+        } else {
+            for (Pizza p : getPizzas()) {
+                if (p.getVarietyID() == varietyId) {
+                    pizzas.add(p);
                 }
             }
-            adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,pizzas);
+
+            adapter = new ArrayAdapter<Pizza>(this, android.R.layout.simple_list_item_1, pizzas);
         }
+
+        gridView.setAdapter(adapter);
 
     }
 
 }
+//    private ArrayList<PizzaBody> getSelectedPizza(){
+//        ArrayList<PizzaBody> data = new ArrayList<>();
+//        data.clear();
+//
+//        data.add(new PizzaBody("Spicy chicken", 1));
+//        data.add(new PizzaBody(""))
+//
+//
+//
+//    }
+//}

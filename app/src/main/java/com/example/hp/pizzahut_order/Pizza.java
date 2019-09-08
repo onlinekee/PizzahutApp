@@ -1,32 +1,23 @@
 package com.example.hp.pizzahut_order;
 
 public class Pizza {
-    private String variety;
-    private String type;
+    private int varietyID;
+    //private String type;
     private String name;
-    private int img;
+    //private int img;
 
-    public Pizza(String variety, String type, String name, int img) {
-        this.variety = variety;
-        this.type = type;
+
+    public Pizza(int varietyID, String name) {
+        this.varietyID = varietyID;
         this.name = name;
-        this.img = img;
     }
 
-    public String getVariety() {
-        return variety;
+    public int getVarietyID() {
+        return varietyID;
     }
 
-    public void setVariety(String variety) {
-        this.variety = variety;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
+    public void setVarietyID(int varietyID) {
+        this.varietyID = varietyID;
     }
 
     public String getName() {
@@ -36,15 +27,6 @@ public class Pizza {
     public void setName(String name) {
         this.name = name;
     }
-
-    public int getImg() {
-        return img;
-    }
-
-    public void setImg(int img) {
-        this.img = img;
-    }
-
 
     @Override
     public String toString() {
