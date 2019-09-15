@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.hp.pizzahut_order">
 
+    <uses-permission android:name="android.permission.VIBRATE" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,9 +18,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".SearchPizza" />
-        <activity android:name=".searchresult" />
         <activity android:name=".rowdata" />
-        <activity android:name=".griditem"></activity>
+        <activity android:name=".griditem" />
+        <activity android:name=".searchresult"></activity>
     </application>
 
 </manifest>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -10,17 +10,19 @@
     <include
         android:id="@+id/include"
         layout="@layout/toolbar_layout" />
-    <GridView
-        android:id="@+id/gridview"
+    <ExpandableListView
+        android:id="@+id/expendaplelistview"
         android:numColumns="1"
         android:verticalSpacing="1dp"
         android:horizontalSpacing="2dp"
         android:background="@drawable/background"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></GridView>
+        android:layout_height="wrap_content">
+
+    </ExpandableListView>
 
 
 
 
 
-</LinearLayout>
+</RelativeLayout>

@@ -1,5 +1,6 @@
 package com.example.hp.pizzahut_order;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -51,6 +52,9 @@ public class SearchPizza extends AppCompatActivity {
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Intent intent = new Intent(SearchPizza.this, searchresult.class);
+                startActivity(intent);
                 Toast.makeText(getApplicationContext(), pizzanames[position], Toast.LENGTH_SHORT).show();
             }
         });
