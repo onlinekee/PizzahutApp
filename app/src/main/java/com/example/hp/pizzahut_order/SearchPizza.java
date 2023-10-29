@@ -14,6 +14,9 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+/* Search pizza page implementation
+* User can search pizza by using variety, type and name
+*/
 public class SearchPizza extends AppCompatActivity {
     Button btnsearch;
     GridView gridView;
